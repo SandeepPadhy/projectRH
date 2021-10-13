@@ -8,10 +8,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 /**
  * Linux mini-utils ================
