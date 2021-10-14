@@ -82,7 +82,7 @@ public class TestSuite {
 			System.out.println(linesepartor+">>MiniGrep-Test4-directory");
 			grep.findPattern("SANDEEP", grepFolder1);
 			 
-			/** 
+			/* 
 			 * Uncomment below to test standard input
 			 * After inserting data from standard input, Please press enter(2x) to go to newline.
 			 * Inserting blank line indicates input end
