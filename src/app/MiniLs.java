@@ -33,6 +33,7 @@ public class MiniLs {
 		try {
 			if (path.length == 0) {
 				File current = new File(System.getProperty("user.dir"));
+				System.out.println(current);
 				list(recursive, current);
 			} else {
 				for (String one : path) {

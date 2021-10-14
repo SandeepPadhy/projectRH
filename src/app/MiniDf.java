@@ -30,16 +30,20 @@ public class MiniDf {
 			if (path.length == 0) {
 				File current = new File(System.getProperty("user.dir"));
 				System.out.println(current);
-				System.out.println("Total Space Available: " + humanReadble(humanReadable, getTotalSpace(current)));
-				System.out.println("Used Space Available: " + humanReadble(humanReadable, getUsedSpace(current)));
+				System.out.println("Used Path Space : " + humanReadble(humanReadable, getUsedSpace(current)));
+				System.out.println("Total Disk Space : " + humanReadble(humanReadable, getTotalSpace(current)));
+				System.out.println("Free Disk Space : " + humanReadble(humanReadable, getFreeSpace(current)));
+				System.out.println("Used Disk Space : " + humanReadble(humanReadable, getDiskUsedSpace(current)));
 				System.out.println();
 			} else {
 				for (String one : path) {
 					File each = new File(one);
 					if (each.isDirectory()) {
 						System.out.println(each.getAbsolutePath());
-						System.out.println("Total Space: " + humanReadble(humanReadable, getTotalSpace(each)));
-						System.out.println("Used Space: " + humanReadble(humanReadable, getUsedSpace(each)));
+						System.out.println("Used Path Space : " + humanReadble(humanReadable, getUsedSpace(each)));
+						System.out.println("Total Disk Space : " + humanReadble(humanReadable, getTotalSpace(each)));
+						System.out.println("Free Disk Space : " + humanReadble(humanReadable, getFreeSpace(each)));
+						System.out.println("Used Disk Space : " + humanReadble(humanReadable, getDiskUsedSpace(each)));
 						System.out.println();
 					} else {
 						System.out.println(each + " is not a Directory !!");
@@ -70,6 +74,14 @@ public class MiniDf {
 
 	private long getTotalSpace(File file) {
 		return file.getTotalSpace();
+	}
+	
+	private long getFreeSpace(File file) throws IOException {
+		return file.getUsableSpace();
+	}
+	
+	private long getDiskUsedSpace(File file) throws IOException {
+		return file.getTotalSpace()-file.getUsableSpace();
 	}
 
 	private String humanReadble(boolean humanReadable, Long size) throws Exception {
