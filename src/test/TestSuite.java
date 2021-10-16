@@ -39,7 +39,7 @@ public class TestSuite {
 			df.getDiskInfo(true, dfFile1);
 		}
 
-		// Has only been tested on Windows machine and not on Linux machine !!
+		
 		if(enableMiniLsTestCase) {
 			MiniLs ls = new MiniLs();
 			String lsFile1 = currDir+"/src/testdata/folder2/pattern1.txt";
@@ -83,8 +83,9 @@ public class TestSuite {
 			grep.findPattern("SANDEEP", grepFolder1);
 			 
 			/* 
-			 * Uncomment below to test standard input
-			 * After inserting data from standard input, Please press enter(2x) to go to newline.
+			 * To test standard input
+			 * Insert multiple lines of String one after another without blank lines.
+			 * After inserting data from standard input, Please press enter(2x) to insert a blank line.
 			 * Inserting blank line indicates input end
 			 */
 			System.out.println(linesepartor+">>MiniGrep-Test5-no file -> standard input");

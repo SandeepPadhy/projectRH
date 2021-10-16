@@ -93,29 +93,33 @@ public class MiniGrep {
 	public void parseFile(boolean setnumber, String pattern, File f , boolean printfilename) throws IOException {
 		int lineCount = 0;
 		BufferedReader reader = null;
-		try {
-			reader = new BufferedReader(new FileReader(f));
-			String currentLine = reader.readLine();
-			while (currentLine != null) {
-				lineCount++;
-				if (currentLine.contains(pattern)) {
-					if (printfilename) {
-						System.out.println();
-						System.out.println(f.getAbsolutePath());
-						printfilename = false;
-					}
-					if (setnumber)
-						System.out.print(lineCount + "  ");
-					System.out.println(currentLine);
-				}
-				currentLine = reader.readLine();
-			}
-		} finally {
+		if(f.canRead()) {
 			try {
-				reader.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+				reader = new BufferedReader(new FileReader(f));
+				String currentLine = reader.readLine();
+				while (currentLine != null) {
+					lineCount++;
+					if (currentLine.contains(pattern)) {
+						if (printfilename) {
+							System.out.println();
+							System.out.println(f.getAbsolutePath());
+							printfilename = false;
+						}
+						if (setnumber)
+							System.out.print(lineCount + "  ");
+						System.out.println(currentLine);
+					}
+					currentLine = reader.readLine();
+				}
+			} finally {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
+		}else {
+			System.out.println(f.getAbsolutePath()+" cant be read !!");
 		}
 	}
 
